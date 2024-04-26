@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}My Reservations{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+  {% for res_form, res_reg in my_res %}
+    <article class="reservation">
+      <header>
+        <div>
+          <h1>{{ res_form['room_num'] }}</h1>
+          <div class="about">Date and Time: {{ res_form['date_time'] }}</div>
+        </div>
+        <form action="{{ url_for('rooms.cancel_reservation') }}" method="post" style="display: inline;">
+          <input type="hidden" name="room_num" value="{{ res_reg['room_num'] }}">
+          <input type="hidden" name="date_time" value="{{ res_reg['date_time'] }}">
+          <button type="submit">Cancel Reservation</button>
+        </form>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

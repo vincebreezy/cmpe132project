@@ -1,0 +1,57 @@
+/* global styles */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #edf2f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* header styling */
+header {
+    background-color: #cad2c5;
+    color: #344e41;
+    padding: 10px;
+    text-align: left;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2em;
+}
+
+h3 {
+    color: #444;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+/* navigation links */
+a {
+    color: #a3b18a; /* green links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* main content styling */
+main {
+    padding: 20px;
+}
+
+h2, h3 {
+    margin-bottom: 10px;
+}
+
+/* block level spacing */
+br {
+    margin-bottom: 10px; /* adds space between elements */
+}
+
+/* sections for organization */
+section {
+    margin-bottom: 20px; /* adds space between sections */
+}
+
+

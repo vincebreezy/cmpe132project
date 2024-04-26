@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Manage Users{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% for user in users %}
+    <article class="user">
+      <header>
+        <div>
+          <h1>{{ user['role_name']|capitalize }}</h1>
+          <div class="about">Name: {{ user['first_name'] }} {{ user['last_name'] }}</div> 
+          <div>Username: {{ user['username'] }}</div>
+          {% if user['approval'] == 0 %}
+            <div><b>Approval Required</b></div>
+          {% endif %}
+        </div>
+        <a class="action" href="{{ url_for('user.update_user', username=user['username']) }}">Edit</a>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

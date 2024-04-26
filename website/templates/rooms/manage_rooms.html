@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}All Rooms{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form action="{{ url_for('rooms.add_room') }}" method="post" style="display: inline;">
+    <label for="room_num">Room Number</label>
+    <input name="room_num" id="room_num" required>
+    <button type="submit">Add New Room</button>
+  </form>
+  <br>
+  <form action="{{ url_for('rooms.remove_room') }}" method="post" style="display: inline;">
+    <label for="room_num">Room Number</label>
+    <input name="room_num" id="room_num" required>
+    <button type="submit">Remove Room/Cancel Reservations</button>
+  </form>
+
+  {% for room in rooms %}
+    <article class="rooms">
+      <header>
+        <div>
+          <h1>{{ room['room_num'] }}</h1>
+          <div>Room Listed: 
+            {% if room['listed'] == 1 %}
+                Yes
+            {% else %}
+                No
+            {% endif %}
+          </div>
+        </div>
+        <form action="{{ url_for('rooms.list_room') }}" method="post" style="display: inline;">
+          <input type="hidden" name="room_num" value="{{ room['room_num'] }}">
+          <button type="submit">
+            {% if room['listed'] == 1 %}
+              Unlist Room
+            {% elif room['listed'] == 0 %}
+              List Room
+            {% endif %}
+          </button>
+        </form>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

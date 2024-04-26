@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"> <!-- Start of the HTML document -->
+<head> <!-- Head section for meta-information and links -->
+  <title>{% block title %}{% endblock %} - CMPE 132 SJSU Library</title> <!-- Page title -->
+  <!-- Linking to the CSS file in the 'static/css' folder -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body> <!-- Body section for content -->
+  <!-- Navigation bar -->
+  <nav>
+    <h1>
+      {% if g.user %}
+        <a href="{{ url_for('index') }}">HOME</a>Welcome, {{ g.user['first_name']}} {{g.user['last_name']}}
+      {% else %}
+        Welcome to SJSU Library
+      {% endif %}
+    </h1>
+    {% if g.user %}
+      <a href="{{ url_for('auth.logout') }}">Log Out</a>
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Log In</a>
+      <br>
+      <a href="{{ url_for('auth.register') }}">Register for an account</a>
+    {% endif %}
+  </nav>
+
+  <!-- Main content section -->
+  <section class="content">
+    <header>
+      {% block header %}{% endblock %}
+    </header>
+    {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+  </section>
+</body>
+</html> <!-- End of the HTML document -->

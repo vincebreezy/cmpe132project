@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Add Book{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="title">Book Title</label>
+    <input name="title" id="title" required>
+    <br>
+    <label for="author">Author</label>
+    <input name="author" id="author" required>
+    <br>
+    <label for="isbn">ISBN-13</label>
+    <input 
+        name="isbn"
+        type="text" 
+        id="isbn" 
+        placeholder="000-0-000-00000-0" 
+        pattern="\d{3}-?\d{1}-?\d{3}-?\d{5}-?\d{1}" 
+        required>
+    <br>
+    <label for="quantity">Quantity</label>
+    <input type="number" name="quantity" id="quantity" min="1" required>
+    <br>
+    <input type="submit" value="Add Book">
+  </form>
+{% endblock %}

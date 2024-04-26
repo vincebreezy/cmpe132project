@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Edit Book: {{ book['title'] }}{% endblock %}</h1>
+  <a href="{{ url_for('books.book_inventory') }}">Return to Book Inventory</a>
+{% endblock %}
+
+{% block content %}
+  <article class="book">
+    <header>
+      <h1>ISBN-13: {{ book['isbn'] }}</h1>
+      <form method="post">
+        <label for="title">Title</label>
+        <input name="title" id="title" 
+          value="{{ request.form['title'] or book['title'] }}" required>
+        <br>
+        <label for="author">Author</label>
+        <input name="author" id="author"
+          value="{{ request.form['author'] or book['author'] }}" required>
+        <br>
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" 
+          value="{{ request.form['quantity'] or book['quantity'] }}" required>
+        <br>
+        <input type="submit" value="Save">
+      </form>
+    </header>
+  </article>
+{% endblock %}

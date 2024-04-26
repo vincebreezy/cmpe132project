@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h2>
+        {% block title %}
+            {% if g.user_role %}
+                {{ g.user_role['role_name']|capitalize }} Dashboard
+            {% else %}
+                Main Page
+            {% endif %}
+        {% endblock %}
+    </h2>
+{% endblock %}
+
+{% block content %}
+    {% if g.user %}
+        <h3>Books</h3>
+        {% if g.user_role['role_name'] == 'student' %}
+            <a href="{{ url_for('books.my_books') }}">My Books</a>
+            <br>
+            <a href="{{ url_for('books.book_inventory') }}">Borrow Books</a>
+        {% elif g.user_role['role_name'] == 'librarian' or g.user_role['role_name'] == 'admin' %}
+            <a href="{{ url_for('books.add_book') }}">Add New Book</a>
+            <br>
+            <a href="{{ url_for('books.book_inventory') }}">Manage Books</a>
+            <br>
+        {% endif %}
+        <h3>Rooms</h3>
+        <a href="{{ url_for('rooms.my_reservations') }}">View My Reservations</a>
+        <br>
+        <a href="{{ url_for('rooms.reserve_room') }}">Reserve a Study Room</a>
+        
+        {% if g.user_role['role_name'] == 'librarian' or g.user_role['role_name'] == 'admin' %}
+            <br>
+            <a href="{{ url_for('rooms.all_reservations') }}">All Reservations</a>
+            <br>
+            <a href="{{ url_for('rooms.manage_rooms') }}">Manage Rooms</a>
+        {% endif %}
+        <br>
+        {% if g.user_role['role_name'] == 'admin' %}
+            <h3>Users</h3>
+            <a href="{{ url_for('user.manage_users') }}">Manage Users</a>
+        {% endif %}
+    {% endif %}
+{% endblock %}

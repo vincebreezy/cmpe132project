@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}My Books{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  {% if my_books|length == 0 %}
+    <h2>No books borrowed</h2>
+  {% endif %}
+
+  {% for book in my_books %}
+    <article class="book">
+      <header>
+        <div>
+          <h1>{{ book['title'] }}</h1>
+          <div class="about">By: {{ book['author'] }}</div>
+          <div>ISBN: {{ book['isbn'] }}</div>
+        </div>
+        <form action="{{ url_for('books.return_book', isbn=book['isbn']) }}" method="post">
+          <input type="submit" value="Return Book" onlick="return confirm('Are you sure?');">
+        </form>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

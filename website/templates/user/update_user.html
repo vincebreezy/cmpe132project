@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Update User{% endblock %}</h1>
+  <a href="{{ url_for('user.manage_users') }}">Return to Users</a>
+{% endblock %}
+
+{% block content %}
+    <article class="user">
+      <header>
+        <div>
+          <h1>{{ user['role_name']|capitalize }}</h1>
+          <div class="about">Name: {{ user['first_name'] }} {{ user['last_name'] }}</div> 
+          <div>Username: {{ user['username'] }}</div>
+        </div>
+        {% if (user['role_name'] == 'librarian' or user['role_name'] == 'admin') and user['approval'] == 0 %}
+          <a class="action" href="{{ url_for('user.approve_user', username=user['username']) }}">Approve Registration</a>
+        {% endif %}
+        <form action="{{ url_for('user.delete_user', username=user['username']) }}" method="post">
+            <input class="danger" type="submit" value="Delete" onlick="return confirm('Are you sure?');">
+        </form>
+      </header>
+    </article>
+{% endblock %}

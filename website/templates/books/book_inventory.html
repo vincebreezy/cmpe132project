@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Books{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="search-container">
+    <form action="{{ url_for('books.search') }}" method="post">
+      <input type="text" placeholder="Book Title.." name="search">
+      <button type="submit">Search</button>
+    </form>
+    {% if search_made %}
+      <br>
+      <form action="{{ url_for('books.book_inventory') }}" method="post">
+        <input type="submit" value="View All Books">
+      </form>
+    {% endif %}
+  </div>
+
+  {% for book in books %}
+    <article class="book">
+      <header>
+        <div>
+          <h1>{{ book['title'] }}</h1>
+          <div class="about">By: {{ book['author'] }}</div> 
+          <div>ISBN: {{ book['isbn'] }}</div>
+        </div>
+        <a class="action" href="{{ url_for('books.book_info', isbn=book['isbn']) }}">More</a>
+      </header>
+    </article>
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

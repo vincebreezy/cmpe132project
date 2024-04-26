@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <a href="{{ url_for('books.book_inventory') }}">Return to Books</a>
+  <h1>{% block title %} {{ book['title'] }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <article class="book">
+      <header>
+        <div>
+          <h1>By {{ book['author'] }}</h1>
+          <div>ISBN: {{ book['isbn'] }}</div>
+          <div>Quantity: {{ book['quantity'] }} </div>
+        </div>
+        {% if g.user_role['role_name'] == 'student' %}
+          <form action="{{ url_for('books.borrow', isbn=book['isbn']) }}" method="post">
+            <input type="submit" value="Borrow" onlick="return">
+          </form>
+        {% elif g.user_role['role_name'] == 'librarian' or g.user_role['role_name'] == 'admin' %}
+          <form action="{{ url_for('books.update_book', isbn=book['isbn']) }}" method="post">
+            <input type="submit" value="Update Book" onlick="return">
+          </form>
+          
+          <form action="{{ url_for('books.remove_book', isbn=book['isbn']) }}" method="post">
+            <input type="submit" value="Remove all copies of Book" onlick="return confirm('Are you sure?');">
+          </form>
+        {% endif %}
+      </header>
+    </article>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Study Room Reservation</h2>
+  <form action="{{ url_for('rooms.reserve_room') }}" method="post">
+    <label for="room_num">Room Number:</label>
+    <select name="room_num" required>
+        {% for room in avail_rooms %}
+            <option value="{{ room }}">{{ room }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label for="date_time">Date and Time:</label>
+    <input type="datetime-local" name="date_time" id="date_time" required>
+    <br>
+    <button type="submit">Reserve Study Room</button>
+  </form>
+{% endblock %}
