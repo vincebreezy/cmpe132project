@@ -13,7 +13,7 @@ INSERT INTO roles (role_name, username, approval)
 VALUES ('student', '1hp', 1),
        ('librarian', 'iayze', 0),
        ('admin', 'user00xman', 1),
-       ('librarian', 'patrick', 1);
+       ('librarian', 'summrsxo', 1);
 
 INSERT INTO books (isbn, title, author, quantity)
 VALUES
@@ -40,26 +40,16 @@ VALUES
 
 INSERT INTO rooms (room_num) 
 VALUES
-    (101),
-    (102),
-    (103),
-    (104),
-    (105),
-    (201),
-    (202),
-    (203),
-    (204),
-    (205),
-    (301),
-    (302),
-    (303),
-    (304),
-    (305),
-    (401),
-    (402),
-    (403),
-    (404),
-    (405);
+    (1),
+    (2),
+    (3),
+    (4),
+    (5),
+    (6),
+    (7),
+    (8),
+    (9),
+    (10);
 
 
 SELECT * FROM users;
