@@ -32,10 +32,6 @@ body {
 	border-top: 2px solid #ddd; 
   }
   
-  .flash {
-	color: red; /* red text for flash messages */
-	font-weight: bold; /* bold text for emphasis */
-  }
   
   header {
 	font-size: 18px; /* default font size for header */
@@ -119,19 +115,19 @@ button:active, input[type="submit"]:active {
 }
 
 .action:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline; /* added underline when hovering */
 }
 
 /* Divider line between book articles */
 hr {
     border: 0;
-    border-top: 1px solid #ccc; /* Light grey line */
+    border-top: 1px solid #ccc; /* light grey line */
 }
 
 /* Label styles */
 label {
     display: block;
     font-weight: bold;
-    color: #333; /* Consistent color for text */
-    margin-bottom: 10px; /* Space between label and input */
+    color: #333; /* consistent color for text */
+    margin-bottom: 10px; /* space between label and input */
 }
