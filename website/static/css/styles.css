@@ -1,81 +1,81 @@
-/* General page layout */
 body {
 	font-family: Arial, sans-serif;
 	margin: 0;
 	padding: 0;
-	background-color: #f5f5f5; /* Light gray background for the whole page */
+	background-color: #f5f5f5; /* light gray background */
   }
   
   h1 {
 	color: #ffffff; /* darkblue for headings */
-	font-size: 20px; /* Larger font size for H1 */
+	font-size: 20px; 
   }
   
   nav {
-	background-color: #a3b18a; /* Blue background for navigation bar */
-	padding: 10px; /* Add padding around content */
-	color: white; /* White text in the nav */
+	background-color: #a3b18a; /* green background for navigation bar */
+	padding: 10px; 
+	color: white; 
   }
   
   nav a {
-	color: white; /* White links in the nav */
-	text-decoration: none; /* Remove underline from links */
-	margin-right: 15px; /* Add space between links */
+	color: white; /* white links in the nav */
+	text-decoration: none; /* remove underline from links */
+	margin-right: 15px; /* add space between links */
   }
   
   nav a:hover {
-	text-decoration: underline; /* Underline links on hover */
+	text-decoration: underline; /* underline links on hover */
   }
   
   section.content {
-	padding: 20px; /* Add padding inside the content section */
-	background-color: white; /* White background for content */
+	padding: 20px; 
+	background-color: white; /* white background for content */
 	border-top: 2px solid #ddd; 
   }
   
   .flash {
-	color: red; /* Red text for flash messages */
-	font-weight: bold; /* Bold text for emphasis */
+	color: red; /* red text for flash messages */
+	font-weight: bold; /* bold text for emphasis */
   }
   
   header {
-	font-size: 18px; /* Default font size for header */
-	margin-bottom: 10px; /* Space below the header */
+	font-size: 18px; /* default font size for header */
+	margin-bottom: 10px; /* space below the header */
   }
   
   /* Global styles */
 body {
-    font-family: 'Lato', sans-serif; /* Set the default font */
+    font-family: 'Lato', sans-serif; /* set the default font */
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
 }
 
-/* Header styles */
+
+/* header styles */
 h1 {
     color: #344e41;
     font-size: 2em;
     margin: 0 0 20px 0;
 }
 
-/* Form and search box styles */
+/* form and search box styles */
 .search-container {
     padding: 20px;
 }
 
 form {
-    display: inline-block; /* Keep forms in a line */
+    display: inline-block; /* keep forms in a line */
 }
 
 input[type="text"] {
-    width: 200px; /* Set a width for the search box */
+    width: 200px; /* set a width for the search box */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 button[type="submit"], input[type="submit"] {
-    background-color: #007bff; /* Blue background */
+    background-color: #75A47F; /* green background */
     color: white;
     border: none;
     padding: 6px 12px;
@@ -85,21 +85,21 @@ button[type="submit"], input[type="submit"] {
 }
 
 button:hover, input[type="submit"]:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #4F6F52; /* darker green on hover */
 }
 
 button:active, input[type="submit"]:active {
-    background-color: #004085; /* Even darker on click */
+    background-color: #1a4d2e; /* darker on click */
 }
 
 /* Article and book display */
 .book {
-    margin-bottom: 5px; /* Add space between books */
+    margin-bottom: 5px; /* add space between books */
 }
 
 .book header {
     display: flex;
-    justify-content: space-between; /* Aligns the 'More' link */
+    justify-content: space-between; /* aligns the 'more' link */
     align-items: center;
 }
 
@@ -109,13 +109,13 @@ button:active, input[type="submit"]:active {
 }
 
 .book .about {
-    color: #344e41; /* Lighter color for subtler text */
+    color: #344e41; /* lighter color for subtler text */
     font-style: italic;
 }
 
 .action {
     text-decoration: none;
-    color: #007bff; /* Blue color for 'More' link */
+    color: #4F6F52; /* dark green color for 'more' link */
 }
 
 .action:hover {
