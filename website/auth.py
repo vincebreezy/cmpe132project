@@ -11,7 +11,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 # Views Requiring Provisioning and Authentication
 
-# Register User: Students register right away, Librarian or Admin requests an existing admin
+# register user: students register right away, librarian or admin requests an existing admin
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
@@ -95,7 +95,7 @@ def login():
 
     return render_template('auth/login.html')
 
-# Load User Data if logged in
+# load user data if logged in
 @bp.before_app_request
 def load_logged_in_user():
     user_id = session.get('user_id')
@@ -110,7 +110,7 @@ def load_logged_in_user():
             'SELECT * FROM roles WHERE username = ?', (user_id,)
         ).fetchone()
 
-# Logout User
+# logout user
 @bp.route('/logout')
 def logout():
     session.clear()

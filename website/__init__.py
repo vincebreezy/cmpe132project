@@ -31,7 +31,7 @@ def create_app(test_config=None):
     from . import db
     db.init_app(app)
 
-    # Blueprint and Views
+    # blueprint and views
     from . import auth
     app.register_blueprint(auth.bp)
 

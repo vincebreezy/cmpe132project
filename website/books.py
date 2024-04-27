@@ -8,7 +8,7 @@ from website.db import get_db
 
 bp = Blueprint('books', __name__, url_prefix='/books')
 
-# Books--------------------------------------------------------------------------------------------------
+# books--------------------------------------------------------------------------------------------------
 @bp.route('/book_inventory', methods=('GET', 'POST'))
 @login_required
 def book_inventory():
@@ -30,7 +30,7 @@ def search():
             'SELECT * FROM books WHERE title LIKE ?', ('%' + query + '%',)
         ).fetchall()
 
-        # Check if there are no results
+        # check if there are no results
         if not results:
             error = 'No results found.'
             flash(error)
@@ -51,7 +51,7 @@ def book_info(isbn):
 @bp.route('/my_books', methods=('GET', 'POST'))
 @login_required
 def my_books():
-    # Only Students have access because only students can borrow books
+    # only students have access because only students can borrow books
     if check_auth('student') == False:
         flash('You do not have permision to view this page.')
         return redirect(url_for('index'))
@@ -75,7 +75,7 @@ def borrow(isbn):
         'SELECT COUNT(*) FROM borrowed_by WHERE isbn = ? AND username = ?',
         (isbn, g.user['username'])
     ).fetchone()
-    # Checks if book is already borrowed by student
+    # checks if book is already borrowed by student
     if book_check[0] == 0:
         if quantity['quantity'] > 0:
             db.execute(
@@ -157,7 +157,7 @@ def add_book():
 @bp.route('/<isbn>/update_book', methods=('GET', 'POST'))
 @login_required
 def update_book(isbn):
-    # Only librarians and admins have access
+    # only librarians and admins have access
     if check_auth('student') == True:
         flash('You do not have permision to view this page.')
         return redirect(url_for('index'))
@@ -211,7 +211,7 @@ def update_book(isbn):
 @bp.route('/<isbn>/remove_book', methods=('POST',))
 @login_required
 def remove_book(isbn):
-    # Only librarians and admins have access
+    # librarians and admins have access
     if check_auth('student') == True:
         flash('You do not have permision to view this page.')
         return redirect(url_for('index'))
@@ -221,7 +221,7 @@ def remove_book(isbn):
         'SELECT COUNT(*) FROM borrowed_by WHERE isbn = ?', (isbn,)
     ).fetchone()
 
-    # If the book is currently being borrowed, you cannot remove the book from the system
+    # if book is borrowed, it cannot be removed 
     if currently_borrowed[0] > 0:
         flash(f'This book is currently borrowed by {currently_borrowed[0]} '
                'students and cannot be removed from the system.')

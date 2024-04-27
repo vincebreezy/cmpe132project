@@ -13,7 +13,7 @@ bp = Blueprint('user', __name__)
 def user():
     return render_template('user/index.html')
 
-# Managing Users------------------------------------------------------------------------------------------
+# manage users------------------------------------------------------------------------------------------
 @bp.route('/manage_users', methods=('GET', 'POST'))
 @login_required
 def manage_users():
@@ -65,7 +65,7 @@ def delete_user(username):
         return redirect(url_for('index'))
 
     db = get_db()
-    # If user has borrowed books, must "return" books back into db
+    # if user has borrowed books, must "return" books back into db
     db.execute(
         'UPDATE books SET quantity = quantity + 1 '
         'WHERE isbn = (SELECT isbn FROM borrowed_by WHERE username = ?)', (username,)
