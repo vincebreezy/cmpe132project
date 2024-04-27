@@ -30,7 +30,7 @@ body {
   section.content {
 	padding: 20px; /* Add padding inside the content section */
 	background-color: white; /* White background for content */
-	border-top: 2px solid #ddd; /* Light gray border on top */
+	border-top: 2px solid #ddd; 
   }
   
   .flash {
